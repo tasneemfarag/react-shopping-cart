@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
+import { Grid } from 'react-bootstrap'
 
 import Subtotal from './components/Subtotal/subtotal';
 import PickupSavings from './components/PickupSavings/PickupSavings';
 import TaxesFees from './components/TaxesFees/TaxesFees';
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
 import ItemDetails from './components/ItemDetails/ItemDetails';
+import PromoCodeDiscount from './components/PromoCode/PromoCode';
 import './App.css';
 
 class App extends Component {
@@ -22,14 +23,16 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Container className="purchase-card">
+        <Grid className="purchase-card">
           <Subtotal price={this.state.total.toFixed(2)} />
           <PickupSavings price={this.state.PickupSavings} />
           <TaxesFees taxes={this.state.taxes.toFixed(2)}/>
           <hr />
           <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)} />
-          <ItemDetails />
-        </Container>
+          <ItemDetails price={this.state.estimatedTotal.toFixed(2)}/>
+          <hr />
+          <PromoCodeDiscount />
+        </Grid>
       </div>
     );
   }
